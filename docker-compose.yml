@@ -17,11 +17,16 @@ services:
       - .env
     links:
       - database
+      - email
   database:
     image: mysql
     env_file:
       - .env
     volumes:
       - database:/var/lib/mysql
+  email:
+    image: mailhog/mailhog
+    ports:
+      - "8025:8025"
 volumes:
   database:
